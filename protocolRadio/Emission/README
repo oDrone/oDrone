@@ -4,7 +4,7 @@
         **************************************
 
 
-emet.ino contient le code d'emission d'un packet depuis un arduino.
+emet.ino contient le code d'emission d'un packet depuis un arduino. (433 MHz)
 
 Un packet oDrone se constitue d'un ID sur 2 octets, de l'id d'un module sur 1 octet et d'une data sur un octet.
 

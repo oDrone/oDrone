@@ -4,7 +4,7 @@
         **************************************
 
 
-reception.cpp contient le code de reception de packet depuis un rapsberry Pi.
+reception.cpp contient le code de reception de packet depuis un rapsberry Pi. (433 MHz)
 
 Pour cela, vous aurez besoin de la lib wiringPi.
 
