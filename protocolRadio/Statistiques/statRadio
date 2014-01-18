@@ -1,0 +1,20 @@
+
+***********************************************
+***** Stat protocole oDrone Communication *****
+***********************************************
+
+Test1: plaque cote a cote, sans antenne
+433mhz, 22h53 16 janvier 2014
+        
+Valeurs utilisees :
+ TIMEVERROU      2750us
+ TIMEHIGH        275us
+ TIMELOW         1225us
+ TIMEUP          275us
+
+Paquet 4 octets
+
+(sur 1000 tests)
+-> parasite = 42,6% de reussite
+-> sans parasite = 93% reussite
+
