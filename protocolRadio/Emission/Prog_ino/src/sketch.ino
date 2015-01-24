@@ -36,6 +36,9 @@ void    send(int pin, char *cmd)
             sendBit(pin, TIMEHIGH);
         }
     }
+    digitalWrite(2, HIGH);
+    delayMicroseconds(TIMEUP);
+    digitalWrite(2, LOW);
 }
 
 // Set the pin used to send the output signal
@@ -54,8 +57,5 @@ void loop()
     // module = 00001001 = 9
     // value =  00000101 = 5
 send(2, "00000000001010100000100100000101");
-digitalWrite(2, HIGH);
-delayMicroseconds(TIMEUP);
-digitalWrite(2, LOW);
 delay(10);
 }
