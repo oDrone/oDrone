@@ -71,7 +71,12 @@ static int incoming_connection(const char *hostname, int port)
         return -1;
     }
 
-    return accept(sock, NULL, NULL);
+    int fd;
+    if ((fd = accept(sock, NULL, NULL)) == -1) {
+	fprintf(stderr, "Accept fail: %m\n");
+	return -1;
+    }
+    return fd;
 }
 
 /* }}} */
@@ -140,10 +145,12 @@ static int main_loop(int csock)
             case 6:
                 array[3] = octet;
 
+		printf("Sending frame with data: %02X\n", octet);
                 send_frame(array, countof(array));
+		break;
 
             default:
-                fprintf(stderr, "invalid byte\n");
+                fprintf(stderr, "invalid byte: %x\n", octet);
                 break;
         }
     }
@@ -159,7 +166,7 @@ int main(void)
         return -1;
     }
 
-    csock = incoming_connection(NULL, 5001);
+    csock = incoming_connection("localhost", 5001);
 
     if (csock < 0) {
         return -1;

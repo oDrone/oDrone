@@ -1,6 +1,6 @@
 NAME = emission
 CC ?= gcc
-CFLAGS = -Wall -W -Wextra -std=gnu99
+CFLAGS += -Wall -W -Wextra -std=gnu99
 CPPFLAGS = -I/usr/local/include -L/usr/local/lib
 LDFLAGS = -lwiringPi
 
