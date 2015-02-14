@@ -104,26 +104,24 @@ static int send_frame(const unsigned char array[], int len)
     send_signal(PIN, TIME_LOCK);
 
     for (int i = 0; i < len; ++i) {
-        switch (array[i]) {
-            /* XXX beware endianess */
+        /* XXX beware endianess */
 
-            /* loop through every bit */
-            for (int j = 0; j < 8; ++j) {
-                unsigned char bit = array[i] & (0x80 >> j);
+        /* loop through every bit */
+        for (int j = 0; j < 8; ++j) {
+            unsigned char bit = (array[i] & (0x80 >> j)) != 0;
 
-                switch (bit) {
-                    case 0:
-                        send_signal(PIN, TIME_LOW);
-                        send_signal(PIN, TIME_HIGH);
-                        break;
-                    case 1:
-                        send_signal(PIN, TIME_HIGH);
-                        send_signal(PIN, TIME_LOW);
-                        break;
+            switch (bit) {
+                case 0:
+                    send_signal(PIN, TIME_LOW);
+                    send_signal(PIN, TIME_HIGH);
+                    break;
+                case 1:
+                    send_signal(PIN, TIME_HIGH);
+                    send_signal(PIN, TIME_LOW);
+                    break;
 
-                    default:
-                        assert (false);
-                }
+                default:
+                    assert (false);
             }
         }
     }
