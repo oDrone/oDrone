@@ -10,6 +10,7 @@
 #include <netdb.h>
 
 #include <wiringPi.h>
+#include <sched.h>
 
 #define PIN 4
 
@@ -25,8 +26,15 @@
 
 static int emission_init(void)
 {
+    struct sched_param p;
+
     wiringPiSetup();
     pinMode(PIN, OUTPUT);
+
+    p.__sched_priority = sched_get_priority_max(SCHED_RR);
+    if (sched_setscheduler(0, SCHED_RR, &p) == -1) {
+        fprintf(stderr, "setscheduler() failed: %m\n");
+    }
 
     return 0;
 }
