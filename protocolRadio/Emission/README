@@ -3,13 +3,9 @@
         ******** oDrone Documentation ********
         **************************************
 
-
-emet.ino contient le code d'emission d'un packet depuis un arduino. (433 MHz)
-
 Un packet oDrone se constitue d'un ID sur 2 octets, de l'id d'un module sur 1 octet et d'une data sur un octet.
 
-L'emission d'un packet debute par un verrou. Les signaux envoy?s sont soumis au codage de Manchester avant d'?tre envoy?s.
+L'emission d'un packet debute par un verrou. Les signaux envoy?s sont soumis au codage de Manchester avant d'être envoyés.
 
 Pour plus de documentation, se referer au Protocole De Communication oDrone
 Pour plus de documentation sur le montage, se referer au tutoriel oDrone sur le montage et l'utilisation d'un emetteur radio sur Arduino (TODO)
-
