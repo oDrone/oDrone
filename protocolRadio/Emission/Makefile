@@ -29,7 +29,7 @@ mrproper: clean
 
 distclean: mrproper
 	$(RM) $(addsuffix ~,$(SRC))
-	$(RM) $(wildcard $(addsuffix .sw* $(addprefix .,$(SRC))))
+	$(RM) $(wildcard $(addsuffix .sw*,$(addprefix .,$(SRC))))
 
 .PHONY: all clean mrproper distclean
 
