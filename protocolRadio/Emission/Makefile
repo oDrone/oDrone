@@ -1,28 +1,35 @@
-NAME = emission
-CC ?= gcc
-CFLAGS += -Wall -W -Wextra -std=gnu99
-CPPFLAGS = -I/usr/local/include -L/usr/local/lib
-LDFLAGS = -lwiringPi
+NAME            = emission
+SRC             = $(wildcard *.c)
 
-SRC = emission.c
+CPPFLAGS        = -I /usr/local/include/
+LDFLAGS         = -L /usr/local/lib -lwiringPi
+CFLAGS          = -W -Wall -Wextra -std=gnu99
 
-OBJ = $(SRC:.c=.o)
+CC              = gcc
+
+OBJ             = $(SRC:.c=.o)
+DEP             = $(SRC:.c=.d)
+
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) -o "$@" $^ $(LDFLAGS)
 
-DEP = $(SRC:.c=.d)
 -include $(DEP)
 
 %.d: %.c
-	$(CC) -MM $(CFLAGS) $(CPPFLAGS) $< -MF $@ -MT "$*.o $@"
+	$(CC) -MM $(CPPFLAGS) $(CFLAGS) $< -MF $@ -MT "$*.o $@"
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(NAME)
 
 mrproper: clean
-	$(RM) $(NAME)
 	$(RM) $(DEP)
 
+distclean: mrproper
+	$(RM) $(addsuffix ~,$(SRC))
+	$(RM) $(wildcard $(addsuffix .sw* $(addprefix .,$(SRC))))
 
-.PHONY: clean mrproper all
+.PHONY: all clean mrproper distclean
+
