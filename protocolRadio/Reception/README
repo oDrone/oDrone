@@ -4,19 +4,21 @@
         **************************************
 
 
-reception.cpp contient le code de reception de packet depuis un rapsberry Pi. (433 MHz)
+reception.c contient le code de reception de packet depuis un rapsberry Pi. (433 MHz)
 
-Pour cela, vous aurez besoin de la lib wiringPi.
+Compilation:
 
-Pour compiler "g++ reception.cpp -lwiringPi"
+Veillez à ce que la bibliothèque wiringPi soit installée puis:
+
+    $ make
 
 Un packet oDrone se constitue d'un ID sur 2 octets, de l'id d'un module sur 1 octet et d'une data sur un octet.
 
 La reception d'un packet se fait en plusieure partie:
 - L'attente du verrou (un envoi d'un signal plus long que les autres)
-- La reception de 2 signaux qui sont transformer pour ne faire qu'un bit (voir codage de manchester)
+- La réception de 2 signaux qui sont transformés pour ne faire qu'un bit (voir codage de manchester)
 - La constitution du paquet
 
 Pour plus de documentation sur le protocole, se referer au Protocole De Communication oDrone
-Pour plus de documentation sur le montage, se referer au tutoriel oDrone sur le montage d'un recepteur radio sur raspberry Pi (TODO)
+Pour plus de documentation sur le montage, se référer au tutoriel oDrone sur le montage d'un récepteur radio sur raspberry Pi (TODO)
 
