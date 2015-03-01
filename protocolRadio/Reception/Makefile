@@ -1,27 +1,35 @@
-NAME = a.out
-CXX ?= g++
-CPPFLAGS =
-LDFLAGS = -lwiringPi
-CXXFLAGS = -Wall -W -Wextra
+NAME            = reception
+SRC             = $(wildcard *.c)
 
-SRC = reception.cpp
+CPPFLAGS        = -I /usr/local/include
+LDFLAGS         = -L /usr/local/lib -lwiringPi
+CFLAGS          = -W -Wall -Wextra -std=gnu99
 
-OBJ = $(SRC:.cpp=.o)
+CC              = gcc
+
+OBJ             = $(SRC:.c=.o)
+DEP             = $(SRC:.c=.d)
+
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) -o "$@" $^ $(LDFLAGS)
+	$(CC) -o "$@" $^ $(LDFLAGS)
 
-DEP = $(SRC:.cpp=.d)
 -include $(DEP)
 
-%.d: %.cpp
-	$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT "$*.o $@"
+%.d: %.c
+	$(CC) -MM $(CPPFLAGS) $(CFLAGS) $< -MF $@ -MT "$*.o $@"
 
 clean:
 	$(RM) $(OBJ)
-
-mrproper: clean
 	$(RM) $(NAME)
 
+mrproper: clean
+	$(RM) $(DEP)
 
-.PHONY: clean mrproper all
+distclean: mrproper
+	$(RM) $(addsuffix ~,$(SRC))
+	$(RM) $(wildcard $(addsuffix .sw* $(addprefix .,$(SRC))))
+
+.PHONY: all clean mrproper distclean
+

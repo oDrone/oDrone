@@ -1,17 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <sys/time.h>
 
 #include <wiringPi.h>
-#include <iostream>
-#include <stdio.h>
-#include <sys/time.h>
-#include <stdlib.h>
+#include <sched.h>
 
 //initialisation du pin de reception
 int pin;
-
-void log(std::string a)
-{
-    std::cout << a << std::endl;
-}
 
 //Fonction de passage du programme en temps réel (car la reception se joue a la micro seconde près)
 void scheduler_realtime() {
@@ -75,7 +71,7 @@ int main (int argc, char** argv)
     // Chargement de la lib
     if (wiringPiSetup() == -1)
     {
-        log("Librairie Wiring PI introuvable, veuillez lier cette librairie...");
+        fprintf(stderr, "Librairie Wiring PI introuvable, veuillez lier cette librairie...");
         return -1;
     }
 
