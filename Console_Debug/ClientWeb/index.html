@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Odrone web command</title>
+    <script type="text/javascript" src="command.js"></script>
+</head>
+<body>
+    <input type="text" id="connect_url" value="192.168.1.52:9000" />
+    <button type="button" id="connect_button" onclick="javascript:connect();">Connect</button>
+    <p>Status: <span id="status" style="color:red;">disconnected</span></p>
+
+    <div style="float:left;width:400px;overflow:hidden;height:600px;">Key:<br /><span id="keys"></span></div>
+    <div style="float:left;width:400px;overflow:hidden;height:600px;">Debug:<br /><span id="debug"></span></div>
+</body>
+</html>
