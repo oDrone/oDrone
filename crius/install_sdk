@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+    echo "usage: $0 DIR"
+    echo ""
+    echo "DIR is where you extracted your arduino archive"
+    exit 1
+fi
+
+SRC_DIR="$1"
+
+PREFIX="/usr/share"
+PROJECT="arduino"
+PROJECT_DIR="$PREFIX/$PROJECT"
+
+mkdir -p "$PROJECT_DIR"
+
+/bin/cp -r "$SRC_DIR/hardware" "$PROJECT_DIR"
+/bin/cp -r "$SRC_DIR/libraries" "$PROJECT_DIR"

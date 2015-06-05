@@ -1,0 +1,40 @@
+Prerequisites
+=============
+
+* avr-binutils
+* avr-libc
+* avrdude
+
+* arduino SDK
+
+Installation of the SDK
+=======================
+
+* download the arduino archive here:
+
+32 bits
+http://downloads.arduino.cc/arduino-1.6.4-linux32.tar.xz
+
+64 bits
+http://downloads.arduino.cc/arduino-1.6.4-linux64.tar.xz
+
+* extract it in the desired location
+
+* run as root the script install.sh with the location as argument
+
+exemple
+-------
+
+    $ wget http://downloads.arduino.cc/arduino-1.6.4-linux64.tar.xz
+    $ tar -xvf arduino-1.6.4-linux64.tar.xz
+    $ sudo ./install.sh arduino-1.6.4-linux64
+
+Compilation of MultiWii
+=======================
+
+make
+
+Upload
+======
+
+make upload
