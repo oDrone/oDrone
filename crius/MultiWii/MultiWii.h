@@ -6,7 +6,7 @@
 #include "types.h"
 #include "Alarms.h"
 
-#define MINCHECK 1100
+#define MINCHECK 1150
 #define MAXCHECK 1900
 
 extern volatile unsigned long timer0_overflow_count;
