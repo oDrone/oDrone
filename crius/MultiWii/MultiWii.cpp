@@ -28,6 +28,8 @@ March  2015     V2.4
 
 #include <avr/pgmspace.h>
 
+#include "logs.h"
+
 /*********** RC alias *****************/
 
 const char pidnames[] PROGMEM =
@@ -764,6 +766,8 @@ void go_arm() {
   #endif
     ) {
     if(!f.ARMED && !f.BARO_MODE) { // arm now!
+        serial_puts("ARMED ! ");
+        delay(1000);
       f.ARMED = 1;
       #if defined(HEADFREE)
         headFreeModeHold = att.heading;
@@ -804,6 +808,8 @@ void go_arm() {
   }
 }
 void go_disarm() {
+    serial_puts("DISARM");
+    delay(1000);
   if (f.ARMED) {
     f.ARMED = 0;
     #ifdef LOG_PERMANENT
