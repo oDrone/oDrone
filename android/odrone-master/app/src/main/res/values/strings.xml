@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">oDrone Monitor</string>
+
+    <string name="action_install_modules">Install Modules</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_display_module_status">Module Status</string>
+    <string name="title_activity_install_modules">Install Modules</string>
+
+</resources>

@@ -1,0 +1,18 @@
+Prerequisites
+=============
+
++ Android SDK
++ gradle (optional)
+
+Build instructions
+==================
+
+Make sure the $ANDROID_HOME environment variable is set to your android SDK
+location, then run:
+
+    $ ./gradlew build
+
+or (if gradle is installed on your machine)
+    
+    $ gradle build
+
